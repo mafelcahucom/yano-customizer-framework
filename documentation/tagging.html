@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yano Customizer Framework</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="icon" type="image/png" href="../assets/image/favicon.png">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+	<link href="../assets/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../assets/highlight/styles/monokai.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+
+</head>
+<body>
+
+	
+	<!-- Header -->
+	<header class="main-header">
+		<div class="container">
+			<div class="logo">
+				<img src="../assets/image/logo.png" title="Yano Customizer Framework">
+			</div>
+
+			<div class="navigation">
+				<nav class="desktop">
+					<ul>
+						<li><a href="../documentation/documentation.html" class="s-1">Documentation</a></li>
+						<li><a href="../documentation/fields.html" class="s-1">Fields</a></li>
+						<li><a href="../documentation/validations.html" class="s-1">Validation</a></li>
+						<li><a href="../documentation/utilities.html" class="s-1">Utilities</a></li>
+					</ul>
+				</nav>
+				<nav class="mobile">
+					<button id="btn-open-nav" class="btn-icon"><i class="la la-navicon"></i> <span class="s-1">Menu</span></button>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<div id="mobile-nav" class="mobile-navigation">
+		<div class="panel">
+			<nav>
+				<ul>
+					<li><a href="../documentation/documentation.html" class="s-1">Documentation</a></li>
+					<li><a href="../documentation/fields.html" class="s-1">Fields</a></li>
+					<li><a href="../documentation/validations.html" class="s-1">Validation</a></li>
+					<li><a href="../documentation/utilities.html" class="s-1">Utilities</a></li>
+				</ul>
+			</nav>
+			<button id="btn-close-nav" class="btn-icon m-center m-t-20"><i class="la la-close"></i> <span class="s-1">Close</span></button>
+		</div>
+	</div>
+	<!-- End Header -->
+	
+	<!-- Breadcrumbs -->
+	<section class="breadcrumbs">
+		<div class="container">
+			<h1>Tagging</h1>
+			<ul>
+				<li><a href="../index.html"><i class="la la-home f-16"></i></a></li>
+				<li><a href="documentation.html">Documentation</a></li>
+				<li><a href="fields.html">Fields</a></li>
+				<li>Tagging</li>
+			</ul>
+		</div>
+	</section>
+	<!-- End Breadcrumbs -->
+	
+	<!-- Content -->
+	<main class="content">
+		<div class="container">
+			<article>
+				
+				<h2>Tagging</h2>
+				<p>The <code class="n">tagging</code> lets you add a tagging field.</p>
+
+				<img class="m-b-20" src="../assets/image/tagging.png" title="Tagging" alt="Tagging" />
+
+				<h2>Parameters</h2>
+				<p>Here are the parameters in adding <code class="n">tagging</code>.</p>
+				<div class="accordion m-b-20">
+					<div>
+						<div class="accordion-head first" data-s="0">
+							<span>id</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>string | required</b>
+							<p>a unique slug-like string to use as an id and also as index in saving data in database.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>label</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>string | optional</b>
+							<p>the label of the field.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>description</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>string | optional</b>
+							<p>the description of the field and display under the label.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>section</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>string | requiredl</b>
+							<p>the section where the field will be displayed.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>default</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>array | optional</b>
+							<p>the default value of the field.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>priority</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>integer | optional</b>
+							<p>determines the order of fields in section.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>placeholder</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>string | optional</b>
+							<p>display placeholder in the field.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>maxitem</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>int | optional</b>
+							<p>the limit number of tags.</p>
+						</div>
+					</div>
+				</div>
+
+				<h2>Example</h2>
+
+<pre>
+<code>
+Yano::field( 'tagging', [
+   'id'            => 'taggingdb1',
+   'label'         => 'Enter your favorite fruits',
+   'description'   => 'description.',
+   'section'       => 'section_id',
+   'priority'      => 1,
+   'maxitem'       => 5,
+] );
+
+// Example with default value
+// Note: default value must exist in choices
+Yano::field( 'tagging', [
+   'id'            => 'taggingdb1',
+   'label'         => 'Enter your favorite fruits',
+   'description'   => 'description.',
+   'section'       => 'section_id',
+   'default'       => [ 'apple', 'grapes' ],
+   'priority'      => 1,
+   'maxitem'       => 5
+] );
+</code>
+</pre>
+
+				<h2>Usage</h2>
+				<p>The <code class="n">yano_get_special_values()</code> function is recommended to retrieve data.</p>
+
+<pre>
+<code>
+// Returns a array
+$tags = yano_get_special_values('taggingdb1');
+</code>
+</pre>
+
+			</article>
+		</div>
+	</main>
+	<!-- End Content -->
+
+	<!-- Footer -->
+	<footer class="main-footer">
+		<div class="container">
+			<div class="copyright">
+				<p class="m-0 s-1">© 2020 - Yano WordPress Customizer Framework</p>
+			</div>
+			<div class="developer">
+				<p class="m-0 s-1">Handcrafted By <a href="https://www.facebook.com/mafeljohn.cahucom" class="link" target="_blank">Mafel John Cahucom</a></p>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer -->
+	
+	
+
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/highlight/highlight.pack.js"></script>
+	<script src="../assets/js/main.js"></script>
+</body>
+</html>

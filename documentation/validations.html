@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yano Customizer Framework</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="icon" type="image/png" href="../assets/image/favicon.png">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+	<link href="../assets/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../assets/highlight/styles/monokai.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+
+</head>
+<body>
+
+	
+	<!-- Header -->
+	<header class="main-header">
+		<div class="container">
+			<div class="logo">
+				<img src="../assets/image/logo.png" title="Yano Customizer Framework">
+			</div>
+
+			<div class="navigation">
+				<nav class="desktop">
+					<ul>
+						<li><a href="../documentation/documentation.html" class="s-1">Documentation</a></li>
+						<li><a href="../documentation/fields.html" class="s-1">Fields</a></li>
+						<li><a href="../documentation/validations.html" class="s-1">Validation</a></li>
+						<li><a href="../documentation/utilities.html" class="s-1">Utilities</a></li>
+					</ul>
+				</nav>
+				<nav class="mobile">
+					<button id="btn-open-nav" class="btn-icon"><i class="la la-navicon"></i> <span class="s-1">Menu</span></button>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<div id="mobile-nav" class="mobile-navigation">
+		<div class="panel">
+			<nav>
+				<ul>
+					<li><a href="../documentation/documentation.html" class="s-1">Documentation</a></li>
+					<li><a href="../documentation/fields.html" class="s-1">Fields</a></li>
+					<li><a href="../documentation/validations.html" class="s-1">Validation</a></li>
+					<li><a href="../documentation/utilities.html" class="s-1">Utilities</a></li>
+				</ul>
+			</nav>
+			<button id="btn-close-nav" class="btn-icon m-center m-t-20"><i class="la la-close"></i> <span class="s-1">Close</span></button>
+		</div>
+	</div>
+	<!-- End Header -->
+	
+	<!-- Breadcrumbs -->
+	<section class="breadcrumbs">
+		<div class="container">
+			<h1>Validations</h1>
+			<ul>
+				<li><a href="../index.html"><i class="la la-home f-16"></i></a></li>
+				<li><a href="documentation.html">Documentation</a></li>
+				<li>Validations</li>
+			</ul>
+		</div>
+	</section>
+	<!-- End Breadcrumbs -->
+	
+	<!-- Content -->
+	<main class="content">
+		<div class="container">
+			<article>
+				
+				<h2>Validations</h2>
+				<p>The <code class="n">validations</code> allows you to add validation to a certain field. It will print an error message regarding on the validation you set. For more information you can read in <a class="link" href="https://make.wordpress.org/core/2016/07/05/customizer-apis-in-4-6-for-setting-validation-and-notifications/" target="_blank">Customizer APIs</a>.</p>
+
+				<p>Example a <code class="n">text</code> field added <code class="n">required</code> validation, the error message will print if the text field is empty.</p>
+				<img class="m-b-20" src="../assets/image/validation.png">
+
+				<h2>How to add validation?</h2>
+				<p>Its easy to add a validation all you need is to add <code class="n">validations</code> and supply it with validations.</p>
+<pre>
+<code>
+Yano::field( 'text', [
+   'id'          => 'firstnamedb1',
+   'label'       => 'Enter Your Firstname',
+   'description' => 'Some description',
+   'priority'    => 1,
+   'validations' => [ 'required' ]
+]);
+</code>
+</pre>
+
+				<p>Example 2: multiple validations, you can add validations as many as you can.</p>
+<pre>
+<code>
+/**
+ * This example we will going to use Yano built in validations
+ * required - print error message if the field is empty
+ * is_integer - print error message if the field value is not integer
+ * less_than[18] - print error message if the field value is greater than or equal to "parameter" 18
+ */
+Yano::field( 'text', [
+   'id'          => 'agedb1',
+   'label'       => 'Enter Age',
+   'description' => 'Some description',
+   'priority'    => 1,
+   'validations' => [ 'required', 'is_integer', 'less_than[18]' ]
+]);
+</code>
+</pre>
+
+				<p>You can also create your own custom function for validations. Note the custom function name must end with <code class="n">_yano_validation</code> example <code class="n">is_number_yano_validation</code>.</p>
+				
+<pre>
+<code>
+/**
+ * In this example we will going to print error message if
+ * the field value is equal to "John"
+ */
+Yano::field( 'text', [
+   'id'          => 'name',
+   'label'       => 'Enter Your Name',
+   'description' => 'Some description',
+   'priority'    => 1,
+   'validations' => [ 'required', 'is_valid_name_yano_validation' ]
+]);
+
+
+/**
+ * Note dont for get to add "_yano_validation" in the end custom function name.
+ * @param object      $validity        holds your custom error message
+ * @param any         $value           the value of the field
+ * @return $validity  error message
+ */
+function is_valid_name_yano_validation( $validity, $value ) {
+   if( $value == 'John' ) {
+      // printing error message
+      $validity->add( 'error', 'John is invalid name.' );
+   }
+   // dont for get to return $validity
+   return $validity;
+}
+</code>
+</pre>
+
+				<p><b>Output:</b></p>
+				<img class="m-b-20" src="../assets/image/validation-custom.png">
+				
+				<h2>Here are the list of available Yano validations.</h2>
+				<p>The following are the list of all native validations that are available to use.</p>
+				<div class="accordion m-b-20">
+					<div>
+						<div class="accordion-head first" data-s="0">
+							<span>required</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (none)</li>
+								<li>error message - "Required Field"</li>
+								<li>print error message is the value is empty</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>valid_email</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (none)</li>
+								<li>error message - "Invalid email address"</li>
+								<li>print error message if the value is not valid email</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>valid_url</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (none)</li>
+								<li>error message - "Invalid url"</li>
+								<li>print error message if the value is invalid url</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>valid_ip</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (none)</li>
+								<li>error message - "Invalid IP address"</li>
+								<li>print error message if the value is invalid IP Address</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>numeric</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (none)</li>
+								<li>error message - "Value must be numeric"</li>
+								<li>print error message if the value is invalid number</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>is_integer</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (none)</li>
+								<li>error message - "Invalid integer"</li>
+								<li>print error message if the value contains not integer</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>min_length</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (integer)</li>
+								<li>error message - "Characters must not lesser #parameter#"</li>
+								<li>example: <code class="n">min_length[10]</code></li>
+								<li>print error message if character length is less than #parameter#</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>max_length</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (integer)</li>
+								<li>error message - "Characters must not exceed #parameter#"</li>
+								<li>example: <code class="n">max_length[10]</code></li>
+								<li>print error message if character length is greater than #parameter#</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>exact_length</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (integer)</li>
+								<li>error message - "Characters must not exceed #parameter#"</li>
+								<li>example: <code class="n">exact_length[10]</code></li>
+								<li>print error message if character length is not equal to #parameter#</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>greater_than</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (float)</li>
+								<li>error message - "Value must greater than #parameter#"</li>
+								<li>example: <code class="n">greater_than[10]</code></li>
+								<li>print error message if value is less than or equal to #parameter#</li>
+								<li>note: can be only used to number value</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>greater_than_equal_to</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (float)</li>
+								<li>error message - "Value must greater than #parameter#"</li>
+								<li>example: <code class="n">greater_than_equal_to[10]</code></li>
+								<li>print error message if value is less than to #parameter#</li>
+								<li>note: can be only used to number value</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>less_than</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (float)</li>
+								<li>error message - "Value must less than #parameter#"</li>
+								<li>example: <code class="n">less_than[10]</code></li>
+								<li>print error message if value is greater than or equal to #parameter#</li>
+								<li>note: can be only used to number value</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>less_than_equal_to</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (float)</li>
+								<li>error message - "Value must less than #parameter#"</li>
+								<li>example: <code class="n">less_than_equal_to[10]</code></li>
+								<li>print error message if value is greater than to #parameter#</li>
+								<li>note: can be only used to number value</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>in_list</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (string)</li>
+								<li>error message - "Value must be in predermined list #parameter#"</li>
+								<li>example: <code class="n">in_list[apple,grapes,mango]</code></li>
+								<li>print error message if value is not in predetermined list value</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>not_in_list</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (string)</li>
+								<li>error message - "Total words must be exactly #parameter#"</li>
+								<li>example: <code class="n">not_in_list[apple,grapes,mango]</code></li>
+								<li>print error message if value is in predetermined list value</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>total_words</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (integer)</li>
+								<li>error message - "Total words must be exactly #parameter#"</li>
+								<li>example: <code class="n">total_words[2]</code></li>
+								<li>value total word count is not equal to #parameter#</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>total_words_greater_than</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (integer)</li>
+								<li>error message - "Total words must be greater than #parameter#"</li>
+								<li>example: <code class="n">total_words_greater_than[2]</code></li>
+								<li>value total word count is less than to #parameter#</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>equal_to_setting</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (string)</li>
+								<li>error message - "Value must equal to setting #setting_value#"</li>
+								<li>example: <code class="n">equal_to_setting[fullname]</code></li>
+								<li>value is not equal to set #settings#</li>
+								<li><b>Note: the parameter is the field id.</b></li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>not_equal_to_setting</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<ul>
+								<li>parameter (string)</li>
+								<li>error message - "Value must not equal to setting #setting_value#"</li>
+								<li>example: <code class="n">not_equal_to_setting[fullname]</code></li>
+								<li>value is equal to set #settings#</li>
+								<li><b>Note: the parameter is the field id.</b></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			
+
+
+				
+
+			</article>
+		</div>
+	</main>
+	<!-- End Content -->
+
+	<!-- Footer -->
+	<footer class="main-footer">
+		<div class="container">
+			<div class="copyright">
+				<p class="m-0 s-1">© 2020 - Yano WordPress Customizer Framework</p>
+			</div>
+			<div class="developer">
+				<p class="m-0 s-1">Handcrafted By <a href="https://www.facebook.com/mafeljohn.cahucom" class="link" target="_blank">Mafel John Cahucom</a></p>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer -->
+	
+	
+
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/highlight/highlight.pack.js"></script>
+	<script src="../assets/js/main.js"></script>
+</body>
+</html>

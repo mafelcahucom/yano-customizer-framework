@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yano Customizer Framework</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="icon" type="image/png" href="../assets/image/favicon.png">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+	<link href="../assets/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../assets/highlight/styles/monokai.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+
+</head>
+<body>
+
+	
+	<!-- Header -->
+	<header class="main-header">
+		<div class="container">
+			<div class="logo">
+				<img src="../assets/image/logo.png" title="Yano Customizer Framework">
+			</div>
+
+			<div class="navigation">
+				<nav class="desktop">
+					<ul>
+						<li><a href="../documentation/documentation.html" class="s-1">Documentation</a></li>
+						<li><a href="../documentation/fields.html" class="s-1">Fields</a></li>
+						<li><a href="../documentation/validations.html" class="s-1">Validation</a></li>
+						<li><a href="../documentation/utilities.html" class="s-1">Utilities</a></li>
+					</ul>
+				</nav>
+				<nav class="mobile">
+					<button id="btn-open-nav" class="btn-icon"><i class="la la-navicon"></i> <span class="s-1">Menu</span></button>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<div id="mobile-nav" class="mobile-navigation">
+		<div class="panel">
+			<nav>
+				<ul>
+					<li><a href="../documentation/documentation.html" class="s-1">Documentation</a></li>
+					<li><a href="../documentation/fields.html" class="s-1">Fields</a></li>
+					<li><a href="../documentation/validations.html" class="s-1">Validation</a></li>
+					<li><a href="../documentation/utilities.html" class="s-1">Utilities</a></li>
+				</ul>
+			</nav>
+			<button id="btn-close-nav" class="btn-icon m-center m-t-20"><i class="la la-close"></i> <span class="s-1">Close</span></button>
+		</div>
+	</div>
+	<!-- End Header -->
+	
+	<!-- Breadcrumbs -->
+	<section class="breadcrumbs">
+		<div class="container">
+			<h1>Active Callback</h1>
+			<ul>
+				<li><a href="../index.html"><i class="la la-home f-16"></i></a></li>
+				<li><a href="documentation.html">Documentation</a></li>
+				<li>Active Callback</li>
+			</ul>
+		</div>
+	</section>
+	<!-- End Breadcrumbs -->
+	
+	<!-- Content -->
+	<main class="content">
+		<div class="container">
+			<article>
+				
+				<h2>Active Callback</h2>
+				<p>The <code class="n">active_callback</code> can be use to set if field will be display under a condition. For more information you can read <a class="link" href="https://developer.wordpress.org/reference/classes/wp_customize_control/active_callback/">Customizer APIs</a>.</p>
+
+				<h1>Example</h1>
+				<p>In this example the <code class="n">text</code> field will be display if <code class="n">toggle</code> is equal to true.</p>
+<pre>
+<code>
+
+/**
+ * Creating a toggle field
+ */
+Yano::field( 'toggle', [
+   'id'          => 'toggledb1c',
+   'label'       => 'Do you want to show text field ?',
+   'description' => 'If you want to display the text.',
+   'section'     => 'section_id',
+   'priority'    => 1
+] );
+
+/**
+ * Creating a text field
+ *
+ * if the return value of the function in active_callback is true then text field will display
+ * else it will hide.
+ */
+Yano::field( 'text', [
+   'id'              => 'textdb1c',
+   'label'           => 'Text',
+   'section'         => 'active',
+   'priority'        => 2,
+   'active_callback' => function() {
+      // condition if the value of toggle is equal to true
+      if( get_theme_mod( 'toggledb1c' ) == true ) {
+         return true;
+      }else{
+         return false;
+      }
+   }
+]);
+</code>
+</pre>
+
+			<p>Example 2: in this example the text field will only show at front page.</p>
+<pre>
+<code>
+/**
+ * Creating text field
+ */
+Yano::field( 'text', [
+   'id'              => 'textdb1c',
+   'label'           => 'Text',
+   'section'         => 'active',
+   'priority'        => 2,
+   'active_callback' => 'show_in_front_page_only'
+]);
+
+/**
+ * Creating a function show_in_front_page_only
+ */
+function show_in_front_page_only() {
+   if( is_front_page() == true ) {
+      return true;
+   }
+   return false;
+}
+</code>
+</pre>
+
+				
+
+			</article>
+		</div>
+	</main>
+	<!-- End Content -->
+
+	<!-- Footer -->
+	<footer class="main-footer">
+		<div class="container">
+			<div class="copyright">
+				<p class="m-0 s-1">© 2020 - Yano WordPress Customizer Framework</p>
+			</div>
+			<div class="developer">
+				<p class="m-0 s-1">Handcrafted By <a href="https://www.facebook.com/mafeljohn.cahucom" class="link" target="_blank">Mafel John Cahucom</a></p>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer -->
+	
+	
+
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/highlight/highlight.pack.js"></script>
+	<script src="../assets/js/main.js"></script>
+</body>
+</html>
