@@ -1,0 +1,82 @@
+body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	overflow-x: hidden;
+}
+
+.clr-gray { color: #919392; }
+
+.f-pou {
+	font-family: 'Pou', sans-serif;
+}
+
+.f-w-300 { font-weight: 300; }
+
+.f-s-italic { font-style: italic; }
+
+.f-0 { font-size: 0; }
+.f-12 { font-size: 12px; }
+.f-14 { font-size: 14px; }
+
+.m-0 { margin: 0 !important; }
+.m-b-5 { margin-bottom: 5px !important; }
+.m-b-10 { margin-bottom: 10px !important; }
+.m-b-15 { margin-bottom: 15px !important; }
+.m-b-20 { margin-bottom: 20px !important; }
+.m-b-25 { margin-bottom: 25px !important; }
+
+.align-center { text-align: center; }
+
+
+/** Menu */
+.mb-menu {
+	cursor: pointer;
+}
+.mb-menu .bar1,
+.mb-menu .bar2,
+.mb-menu .bar3 {
+	width: 30px;
+  	height: 5px;
+  	background-color: #2f3937;
+  	margin: 5px 0;
+  	transition: 0.4s;
+}
+
+/* Rotate first bar */
+.mb-menu.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-7px, 5px) ;
+  transform: rotate(-45deg) translate(-7px, 5px) ;
+}
+
+/* Fade out the second bar */
+.mb-menu.change .bar2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.mb-menu.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+  transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
+p.info {
+	font-size: 14px;
+	font-style: italic;
+}
+a.link {
+	font-weight: 600;
+}
+
+code.content {
+	background: #e4e4e4;
+	padding: 2px;
+	border: 1px solid #ccc8c8;
+	border-radius: 5px;
+}
+
+.hljs {
+	font-size: 16px;
+	border-radius: 5px;
+	padding: 15px;
+}
