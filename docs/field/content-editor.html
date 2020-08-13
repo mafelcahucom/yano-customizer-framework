@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Yano Customizer Framework | Field | Content Editor</title>
+
+	<link rel="icon" href="../../assets/img/favicon.png" type="image/x-icon" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="The content editor lets you add a Content Editor Field.">
+
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../../assets/font/pou/pou.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/font/line-awesome/css/line-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/highlight/styles/monokai.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/css/global.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/css/docs.css">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167441707-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+	  	function gtag(){dataLayer.push(arguments);}
+	  	gtag('js', new Date());
+
+	  	gtag('config', 'UA-167441707-1');
+	</script>
+
+</head>
+<body>
+	
+	<!-- Header -->
+	<header class="main-header">
+		<div class="container">
+			<div class="column">
+				<div class="header__navigation show-in-mb">
+					<button id="btn-open-nav" class="btn-nav" >
+						<i class="la la-navicon"></i>
+					</button>
+				</div>
+				<div class="header__brand" title="Yano Customizer">
+					<a href="../../index.html">
+						<img src="../../assets/img/logo.png" alt="Yano Customizer">
+						<span class="f-pou">Yano</span>
+					</a>
+				</div>
+				<div class="header__search_desktop">
+					<div class="search__wrapper">
+						<input class="input-search search__input" type="text" placeholder="Search">
+						<i class="la la-search"></i>
+						<div class="search__results"><ul></ul></div>
+					</div>	
+				</div>
+				
+				<div class="header__more show-in-mb">
+					<button id="btn-more" class="btn-nav" data-status="hidden">
+						<i class="la la-ellipsis-v"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div id="header__search_mobile_panel" class="header__search_mobile">
+		<div class="container">
+			<div class="search__wrapper">
+				<input class="input-search search__input" type="text" placeholder="Search">
+				<i class="la la-search"></i>
+				<div class="search__results"><ul></ul></div>
+			</div>	
+		</div>
+	</div>
+	<!-- Mobile Sidebar -->
+	<div class="mb-sidebar">
+		<aside class="mb-sidebar-panel">
+			<div class="navigation">
+				<button id="btn-close-navigation" title="Close"><i class="la la-close"></i></button>
+			</div>
+			<ul class="side-navigation"></ul>
+			<div class="padding-15"></div>
+		</aside>
+	</div>
+	<!-- End: Mobile Sidebar -->
+	<!-- End: Header -->
+
+	<!-- Main -->
+	<section class="main-content">
+		<div class="container">
+			<div class="column">
+				<aside class="content__sidebar">
+					<ul class="side-navigation"></ul>
+				</aside>
+				<main class="content__article">
+				<article>
+				
+				<h1>Content Editor</h1>
+				<div class="line"></div>
+				<p>The <code class="n">content-editor</code> lets you add a Content Editor Field.</p>
+
+				<img class="m-b-20" src="../../assets/img/fields/content-editor.png" title="Content Editor" alt="Content Editor" />
+
+				<h2>Parameters</h2>
+				<p>Here are the parameters in adding <code class="n">content-editor</code>.</p>
+				<div class="accordion m-b-20">
+					<div>
+						<div class="accordion-head first" data-s="0">
+							<span>id</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>string | required</b>
+							<p>a unique slug-like string to use as an id and also as index in saving data in database.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>label</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>string | optional</b>
+							<p>the label of the field.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>description</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>string | optional</b>
+							<p>the description of the field and display under the label.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>section</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>string | requiredl</b>
+							<p>the section where the field will be displayed.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>default</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>string | optional</b>
+							<p>the default value of the field.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>priority</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>integer | optional</b>
+							<p>determines the order of fields in section.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>uploader</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>boolean | optional | default: false</b>
+							<p>add a media uploader button.</p>
+						</div>
+					</div>
+					<div>
+						<div class="accordion-head" data-s="0">
+							<span>toolbars</span>
+							<i class="la la-angle-down"></i>
+						</div>
+						<div class="accordion-content">
+							<b>array | optional </b>
+							<p>allowing to add controls in toolbars.</p>
+							<p>Note: here are the list of toolbars available [ 'bold', 'italic', 'strikethrough', 'bullist', 'numlist', 'blockquote', 'hr', 'alignleft', 'aligncenter', 'alignright', 'link', 'unlink', 'wp_more', 'spellchecker', 'fullscreen', 'wp_adv', 'formatselect', 'underline', 'alignjustify', 'forecolor', 'pastetext', 'removeformat', 'charmap', 'outdent', 'indent', 'undo', 'redo', 'wp_help' ]</p>
+						</div>
+					</div>
+				</div>
+
+				<h2>Example</h2>
+
+<pre>
+<code>
+Yano::field( 'content-editor', [
+   'id'          => 'editor1',
+   'label'       => 'Write Your Content',
+   'description' => 'Description Here.',
+   'section'     => 'section_id',
+   'priority'    => 1,
+] );
+</code>
+</pre>
+				<p class="tip">Example with <code>default</code> value! note: default value can only be supplied of <code>string</code> or <code>html</code>.</p>
+<pre>
+<code>
+Yano::field( 'content-editor', [
+   'id'          => 'editor1',
+   'label'       => 'Write Your Content',
+   'description' => 'Description Here.',
+   'section'     => 'section_id',
+   'default'     => 'Hello World',
+   'priority'    => 1,
+] );
+</code>
+</pre>
+				<p class="tip">Example with <code>uploader</code>! note: uploader can be supplied only in <code>boolean</code>.</p>
+<pre>
+<code>
+Yano::field( 'content-editor', [
+   'id'          => 'editor1',
+   'label'       => 'Write Your Content',
+   'description' => 'Description Here.',
+   'section'     => 'section_id',
+   'default'     => 'Hello World',
+   'priority'    => 1,
+   'uploader'    => true
+] );
+</code>
+</pre>
+				<p class="tip">Example with <code>toolbars</code>! here are the list of toolbars available <code>bold</code>, <code>italic</code>, <code>strikethrough</code>, <code>bullist</code>, <code>numlist</code>, <code>blockquote</code>, <code>hr</code>, <code>alignleft</code>, <code>aligncenter</code>, <code>alignright</code>, <code>link</code>, <code>unlink</code>, <code>wp_more</code>, <code>spellchecker</code>, <code>fullscreen</code>, <code>wp_adv</code>, <code>formatselect</code>, <code>underline</code>, <code>alignjustify</code>, <code>forecolor</code>, <code>pastetext</code>, <code>removeformat</code>, <code>charmap</code>, <code>outdent</code>, <code>indent</code>, <code>undo</code>, <code>redo</code>, <code>wp_help</code>.</p>
+<pre>
+<code>
+Yano::field( 'content-editor', [
+   'id'          => 'editor1',
+   'label'       => 'Write Your Content',
+   'description' => 'Description Here.',
+   'section'     => 'section_id',
+   'default'     => 'Hello World',
+   'priority'    => 1,
+   'uploader'    => true,
+   'toolbars'    => [ 'bold', 'italic' ]
+] );
+</code>
+</pre>
+
+				<h2>Usage</h2>
+				<p>The <code class="n">get_theme_mod()</code> function is recommended to retrieve data.</p>
+
+<pre>
+<code>
+// Return a string
+echo get_theme_mod('editor1');
+</code>
+</pre>
+
+			</article>
+				</main>
+			</div>
+		</div>
+	</section>
+	<!-- End: Main -->
+
+	<!-- Footer -->
+	<footer class="main-footer">
+		<div class="container">
+			<p class="m-0 align-center">Copyright © 2020, Handcrafted by <a class="link" href="https://www.facebook.com/mafeljohn.cahucom" target="_blank">Mafel John Cahucom</a>, Under the GPL, Version 2.0</p>
+		</div>
+	</footer>
+	<!-- End: Footer  -->
+
+
+
+	<script src="../../assets/js/jquery.min.js"></script>
+	<script src="../../assets/highlight/highlight.pack.js"></script>
+	<script src="../../assets/js/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Yano Customizer Framework | Installation</title>
+
+	<link rel="icon" href="../assets/img/favicon.png" type="image/x-icon" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Their are two ways to install Yano in your wordpress project. The first option is to download Yano plugin version and install in your WordPress Directory. The second option is to download Yano library version and include in your theme.">
+
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../assets/font/pou/pou.css">
+	<link rel="stylesheet" type="text/css" href="../assets/font/line-awesome/css/line-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/highlight/styles/monokai.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/global.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/docs.css">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167441707-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+	  	function gtag(){dataLayer.push(arguments);}
+	  	gtag('js', new Date());
+
+	  	gtag('config', 'UA-167441707-1');
+	</script>
+
+</head>
+<body class="installation">
+	
+	<!-- Header -->
+	<header class="main-header">
+		<div class="container">
+			<div class="column">
+				<div class="header__navigation show-in-mb">
+					<button id="btn-open-nav" class="btn-nav" >
+						<i class="la la-navicon"></i>
+					</button>
+				</div>
+				<div class="header__brand" title="Yano Customizer">
+					<a href="../index.html">
+						<img src="../assets/img/logo.png" alt="Yano Customizer">
+						<span class="f-pou">Yano</span>
+					</a>
+				</div>
+				<div class="header__search_desktop">
+					<div class="search__wrapper">
+						<input class="input-search search__input" type="text" placeholder="Search">
+						<i class="la la-search"></i>
+						<div class="search__results"><ul></ul></div>
+					</div>	
+				</div>
+				
+				<div class="header__more show-in-mb">
+					<button id="btn-more" class="btn-nav" data-status="hidden">
+						<i class="la la-ellipsis-v"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div id="header__search_mobile_panel" class="header__search_mobile">
+		<div class="container">
+			<div class="search__wrapper">
+				<input class="input-search search__input" type="text" placeholder="Search">
+				<i class="la la-search"></i>
+				<div class="search__results"><ul></ul></div>
+			</div>	
+		</div>
+	</div>
+	<!-- Mobile Sidebar -->
+	<div class="mb-sidebar">
+		<aside class="mb-sidebar-panel">
+			<div class="navigation">
+				<button id="btn-close-navigation" title="Close"><i class="la la-close"></i></button>
+			</div>
+			<ul class="side-navigation"></ul>
+			<div class="padding-15"></div>
+		</aside>
+	</div>
+	<!-- End: Mobile Sidebar -->
+	<!-- End: Header -->
+
+	<!-- Main -->
+	<section class="main-content">
+		<div class="container">
+			<div class="column">
+				<aside class="content__sidebar">
+					<ul class="side-navigation"></ul>
+				</aside>
+				<main class="content__article">
+					<article>
+				<h1>Installation</h1>
+				<div class="line m-b-20"></div>
+				<p>Their are two ways to install Yano in your wordpress project. The first option is to download Yano plugin version and install in your WordPress Directory. The second option is to download Yano library version and include in your theme.</p>
+				<h2>Install as Plugin</h2>
+				<p><b>Step 1:</b> Download <a class="link" href="download/plugin/yano-customizer.zip">Yano Plugin Version</a>.</p>
+				<p><b>Step 2:</b> Upload the file <code class="n">yano-customizer.zip</code> in your WordPress Plugin Directory.</p>
+				<p><b>Step 3:</b> Install and Activate.</p>
+				<p class="tip">Note! before adding yano codes in your <code class="n">functions.php</code> check first if class <code class="n">Yano</code> exists.</p>
+<pre>
+<code class="php">
+// Check if Yano class exists
+if ( class_exists('Yano') ) {
+    // in here you can add panel, section, fields
+}
+</code>
+</pre>
+				<p class="tip">You can also write in this way.</p>
+<pre>
+<code class="php">
+// Check if Yano class exists
+if ( class_exists('Yano') ) {
+    // call the function inside
+    customizer_fields();
+}
+
+// Holds all the field
+function customizer_fields() {
+// panel
+Yano::panel( 'panel_id', [
+   'title'	   => 'Panel title',
+   'description' => 'Panel description',
+   'priority'    => 1
+] );
+
+// section
+Yano::section( 'section_id', [
+   'title'       => 'Section title',
+   'description' => 'Section description',
+   'priority'    => 1,
+   'panel'       => 'panel_id'
+] );
+
+// Text Field
+Yano::field( 'text', [
+   'id'          => 'textdb1',
+   'label'       => 'Text Title',
+   'description' => 'Text Description',
+   'section'     => 'section_id',
+   'priority'    => 1,
+   'placeholder' => 'Write text'
+] );
+
+}
+
+</code>
+</pre>
+
+				<h2>Install as Library</h2>
+				<p><b>Step 1:</b> Download <a class="link" href="download/library/yano-customizer.zip">Yano Library Version</a></p>
+				<p><b>Step 2:</b> Extract <code class="n">yano-customizer.zip</code>.</p>
+				<p><b>Step 3:</b> Open folder yano-customizer and inside copy folder <code class="n">yano-customizer</code>.</p>
+				<img src="../assets/img/instruction/copy-yano-customizer.jpg">
+				<p><b>Step 4:</b> Paste or add folder <code class="n">yano-customizer</code> in your WordPress Theme Directory.</p>
+				<img src="../assets/img/instruction/copy-in-theme.jpg">
+				<p><b>Step 5:</b> After <code class="n">yano-customizer</code> folder has been added, now you can include or require <code class="n">yano-customizer.php</code> in <code class="n">functions.php</code>.</p>
+<pre>
+<code class="php">
+// in functions.php
+// include yano-customizer.php
+require get_parent_theme_file_path( '/yano-customizer/yano-customizer.php' );
+
+// after requiring 
+// check if Yano Class Exists
+if ( class_exists('Yano') ) {
+     // in here you can add panel, section, fields
+     // the same as example in above
+}
+
+</code>
+</pre>
+			</article>
+				</main>
+			</div>
+		</div>
+	</section>
+	<!-- End: Main -->
+
+	<!-- Footer -->
+	<footer class="main-footer">
+		<div class="container">
+			<p class="m-0 align-center">Copyright © 2020, Handcrafted by <a class="link" href="https://www.facebook.com/mafeljohn.cahucom" target="_blank">Mafel John Cahucom</a>, Under the GPL, Version 2.0</p>
+		</div>
+	</footer>
+	<!-- End: Footer  -->
+
+
+
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/highlight/highlight.pack.js"></script>
+	<script src="../assets/js/docs.js"></script>
+</body>
+</html>
