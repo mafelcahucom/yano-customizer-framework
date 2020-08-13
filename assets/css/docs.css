@@ -166,6 +166,7 @@ a.link:focus {
 #btn-more {
 	background: transparent;
 	border: 0;
+        outline: none;
 }
 .btn-nav {
 	background: transparent;
@@ -173,6 +174,7 @@ a.link:focus {
 	border: 0;
 	padding: 0;
 	cursor: pointer;
+        outline: none;
 }
 .btn-nav:hover,
 .htn-nav:focus {
