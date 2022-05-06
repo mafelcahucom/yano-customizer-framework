@@ -37,6 +37,31 @@ $(document).ready(function(){
 		}
 	});
 
+
+	// Testimonial slider
+	$('.testimonial-slider').slick({
+		infinite: true,
+		dots: true,
+		arrows: false,
+		slidesToShow: 2,
+		slidesToScroll: 1,
+		speed: 300,
+		autoplay: true,
+		autoplaySpeed: 10000,
+		customPaging: function( slider, i ) {
+			return `<button id="${ i }" class="btn-testimonial-dot"></button>`;
+		},
+		responsive: [
+			{
+				breakpoint: 1050,
+				settings: {
+					slidesToShow: 1
+				}
+			}
+		]
+	});
+
+
 	// Set svg height to fit
 	function svg_fit_height( classname ) {
 		var svg = document.getElementsByClassName(classname)[0];
